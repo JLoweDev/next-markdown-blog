@@ -14,7 +14,7 @@ export default function Home({ posts }) {
 
       <div className="posts">
         {posts.map((post, index) => (
-          <h3>{post.frontmatter.title}</h3>
+          <Post post={post} />
         ))}
       </div>
     </div>
@@ -33,7 +33,7 @@ export async function getStaticProps() {
     // Get frontmatter
     const markdownWithMeta = fs.readFileSync(path.join('posts', filename), 'utf-8')
 
-    const {data:frontmatter} = matter(markdownWithMeta)
+    const { data: frontmatter } = matter(markdownWithMeta)
 
     return {
       slug,
